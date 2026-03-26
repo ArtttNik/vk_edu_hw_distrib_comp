@@ -20,10 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 @ParameterizedClass
 @ArgumentsSource(KVServiceFactoryArgumentsProvider.class)
-@SuppressWarnings({
-    "PMD.UnitTestAssertionsShouldIncludeMessage",
-    "PMD.LinguisticNaming",
-})
 class SingleNodeTest extends TestBase {
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     public static final Duration TIMEOUT = Duration.ofSeconds(5);
