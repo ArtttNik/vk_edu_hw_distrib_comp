@@ -1,6 +1,7 @@
 package company.vk.edu.distrib.compute.artttnik;
 
 import company.vk.edu.distrib.compute.Dao;
+import company.vk.edu.distrib.compute.artttnik.exception.StorageInitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
@@ -67,11 +68,5 @@ public class MyDao implements Dao<byte[]> {
 
     private static String sanitizeFileName(String key) {
         return Base64.getUrlEncoder().encodeToString(key.getBytes(StandardCharsets.UTF_8));
-    }
-
-    static final class StorageInitException extends RuntimeException {
-        StorageInitException(String message, Throwable cause) {
-            super(message, cause);
-        }
     }
 }

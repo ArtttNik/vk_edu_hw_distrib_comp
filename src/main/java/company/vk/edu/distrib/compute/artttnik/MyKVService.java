@@ -5,6 +5,7 @@ import company.vk.edu.distrib.compute.KVService;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import company.vk.edu.distrib.compute.artttnik.exception.ServerStartException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
@@ -53,12 +54,6 @@ public class MyKVService implements KVService {
                 log.debug("Failed to close Dao", e);
             }
             log.info("KVService stopped");
-        }
-    }
-
-    static final class ServerStartException extends RuntimeException {
-        ServerStartException(String message, Throwable cause) {
-            super(message, cause);
         }
     }
 
