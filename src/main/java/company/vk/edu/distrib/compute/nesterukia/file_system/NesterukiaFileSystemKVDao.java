@@ -39,13 +39,13 @@ public class NesterukiaFileSystemKVDao implements Dao<byte[]> {
         validateKey(key);
         Path file = getFilePath(key, storageDir);
 
-        if (!Files.exists(file)) {
-            throw new NoSuchElementException();
-        }
-
         ReentrantReadWriteLock lock = getLock(key);
         lock.readLock().lock();
         try {
+            if (!Files.exists(file)) {
+                keyLocks.remove(key);
+                throw new NoSuchElementException();
+            }
             return FileSystemUtils.readFileContent(file);
         } finally {
             lock.readLock().unlock();
